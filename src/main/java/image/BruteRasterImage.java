@@ -1,0 +1,57 @@
+package image;
+
+import javafx.scene.paint.Color;
+
+public class BruteRasterImage implements Image {
+    Color[][] pixels;
+
+    //x = row number; y = column number
+    public BruteRasterImage(Color color, int width, int height) {
+        for(int x = 0 ; x < height ; x++) {
+            for (int y = 0 ; y < width ; y++ ) {
+                pixels[x][y] = color;
+            }
+        }
+    }
+
+    public BruteRasterImage(Color[][] colors) {
+        //TODO
+    }
+
+
+    public void createRepresentation() {
+        //TODO
+    }
+
+    public void setPixelColor(Color color, int x, int y) {
+        //TODO
+    }
+
+    public Color getPixelColor(int x, int y) {
+        //TODO
+    }
+
+    private void setPixelsColor(Color[][] pixels) {
+        //TODO
+    }
+
+    private void setPixelsColor(Color color) {
+        //TODO
+    }
+
+    public int getWidth() {
+        //TODO
+    }
+
+    public int getHeight() {
+        //TODO
+    }
+
+    protected void setWidth(int width) {
+        //TODO
+    }
+
+    protected void setHeight(int height) {
+        //TODO
+    }
+}
