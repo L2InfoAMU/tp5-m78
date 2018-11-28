@@ -2,11 +2,11 @@ package image;
 
 import javafx.scene.paint.Color;
 
-import static util.Matrices.requiresNonNull;
-import static util.Matrices.requiresNonZeroDimensions;
-import static util.Matrices.requiresRectangularMatrix;
+import static util.Matrices.*;
 public class BruteRasterImage implements Image {
-    Color[][] pixels;
+    private Color[][] pixels;
+    private int width;
+    private int height;
 
     //x = row number; y = column number
     public BruteRasterImage(Color color, int width, int height) {
@@ -15,6 +15,8 @@ public class BruteRasterImage implements Image {
                 pixels[x][y] = color;
             }
         }
+        this.width=width;
+        this.height= height;
     }
 
     public BruteRasterImage(Color[][] colors) {
@@ -22,6 +24,8 @@ public class BruteRasterImage implements Image {
         requiresNonZeroDimensions(colors);
         requiresRectangularMatrix(colors);
         pixels = colors.clone();
+        this.width = getColumnCount(colors);
+        this.height = getRowCount(colors);
     }
 
 
@@ -34,7 +38,7 @@ public class BruteRasterImage implements Image {
     }
 
     public Color getPixelColor(int x, int y) {
-        //TODO
+        return pixels[x][y];
     }
 
     private void setPixelsColor(Color[][] pixels) {
@@ -46,11 +50,11 @@ public class BruteRasterImage implements Image {
     }
 
     public int getWidth() {
-        //TODO
+        return width;
     }
 
     public int getHeight() {
-        //TODO
+        return height;
     }
 
     protected void setWidth(int width) {
