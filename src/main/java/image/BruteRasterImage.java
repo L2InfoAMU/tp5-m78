@@ -2,6 +2,9 @@ package image;
 
 import javafx.scene.paint.Color;
 
+import static util.Matrices.requiresNonNull;
+import static util.Matrices.requiresNonZeroDimensions;
+import static util.Matrices.requiresRectangularMatrix;
 public class BruteRasterImage implements Image {
     Color[][] pixels;
 
@@ -15,7 +18,10 @@ public class BruteRasterImage implements Image {
     }
 
     public BruteRasterImage(Color[][] colors) {
-        //TODO
+        requiresNonNull(colors);
+        requiresNonZeroDimensions(colors);
+        requiresRectangularMatrix(colors);
+        pixels = colors.clone();
     }
 
 
