@@ -30,7 +30,7 @@ public class BruteRasterImage implements Image {
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        //TODO
+        pixels[x][y] = color;
     }
 
     public Color getPixelColor(int x, int y) {
