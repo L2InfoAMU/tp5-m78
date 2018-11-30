@@ -19,9 +19,9 @@ public class BruteRasterImage implements Image {
         requiresNonNull(colors);
         requiresNonZeroDimensions(colors);
         requiresRectangularMatrix(colors);
-        pixels = colors.clone();
         this.width = colors.length;
         this.height = colors[0].length;
+        setPixelsColor(colors);
     }
 
 

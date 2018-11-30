@@ -19,7 +19,7 @@ public class PaletteRasterImage implements Image {
     }
 
     public PaletteRasterImage(Color[][] pixels) {
-        indexesOfColors = pixels.clone(); //TODO bon type
+        setPixelsColor(pixels);
         this.width = indexesOfColors.length;
         this.height = indexesOfColors[0].length;
     }
@@ -30,7 +30,7 @@ public class PaletteRasterImage implements Image {
     }
 
     public void setPixelColor(Color color, int x, int y) {
-        indexesOfColors[x][y] = Color; //TODO bon type
+        indexesOfColors[x][y] = palette.indexOf(color);
     }
 
     public Color getPixelColor(int x, int y) {
@@ -38,13 +38,17 @@ public class PaletteRasterImage implements Image {
     }
 
     public void setPixelsColor(Color[][] pixels) {
-        indexesOfColors = pixels.clone(); //TODO bon type
+        for (int x = 0 ; x < width ; x++) {
+            for(int y = 0 ; y < height ;y ++){
+                setPixelColor(pixels[x][y], x, y);
+            }
+        }
     }
 
     private void setPixelsColor(Color color) {
         for(int x = 0 ; x < width ; x++) {
             for (int y = 0 ; y < height ; y++ ) {
-                indexesOfColors[x][y] = color; //TODO bon type
+                indexesOfColors[x][y] = palette.indexOf(color);
             }
         }
     }
