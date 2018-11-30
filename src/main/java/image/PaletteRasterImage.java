@@ -1,15 +1,14 @@
 package image;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.Matrices.*;
+
 public class PaletteRasterImage extends RasterImage {
-    List<Color> palette;
-    int[][] indexesOfColors;
-    int width;
-    int height;
+    private List<Color> palette;
+    private int[][] indexesOfColors;
 
     public PaletteRasterImage(Color color, int width, int height) {
         this.width=width;
@@ -20,6 +19,9 @@ public class PaletteRasterImage extends RasterImage {
     }
 
     public PaletteRasterImage(Color[][] pixels) {
+        requiresNonNull(pixels);
+        requiresNonZeroDimensions(pixels);
+        requiresRectangularMatrix(pixels);
         this.width = pixels.length;
         this.height = pixels[0].length;
         createRepresentation();
@@ -35,7 +37,7 @@ public class PaletteRasterImage extends RasterImage {
 	}	
     }
 
-    public void createRepresentation() {
+    private void createRepresentation() {
         palette = new ArrayList<>();
         indexesOfColors = new int[width][height];
 

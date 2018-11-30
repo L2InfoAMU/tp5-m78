@@ -2,14 +2,11 @@ package image;
 
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class RasterImage implements Image {
     int width;
     int height;
 
-    public void setPixelsColor(Color[][] pixels) {
+    void setPixelsColor(Color[][] pixels) {
         for (int x = 0 ; x < width ; x++) {
             for(int y = 0 ; y < height ;y ++){
                 setPixelColor(pixels[x][y], x, y);
@@ -17,7 +14,7 @@ public abstract class RasterImage implements Image {
         }
     }
 
-    public void setPixelsColor(Color color) {
+    void setPixelsColor(Color color) {
         for(int x = 0 ; x < width ; x++) {
             for (int y = 0 ; y < height ; y++ ) {
                 setPixelColor(color, x, y);

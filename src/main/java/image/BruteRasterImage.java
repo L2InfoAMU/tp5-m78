@@ -1,12 +1,10 @@
 package image;
 
 import javafx.scene.paint.Color;
-
 import static util.Matrices.*;
+
 public class BruteRasterImage extends RasterImage {
     private Color[][] pixels;
-    private int width;
-    private int height;
 
     public BruteRasterImage(Color color, int width, int height) {
         this.width=width;
@@ -26,7 +24,7 @@ public class BruteRasterImage extends RasterImage {
     }
 
 
-    public void createRepresentation() {
+    private void createRepresentation() {
         pixels = new Color[width][height];
     }
 
