@@ -20,8 +20,8 @@ public class BruteRasterImage implements Image {
         requiresNonZeroDimensions(colors);
         requiresRectangularMatrix(colors);
         pixels = colors.clone();
-        this.width = getColumnCount(colors);
-        this.height = getRowCount(colors);
+        this.width = colors.length;
+        this.height = colors[0].length;
     }
 
 
