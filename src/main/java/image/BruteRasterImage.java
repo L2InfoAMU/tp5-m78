@@ -28,10 +28,12 @@ public class BruteRasterImage extends RasterImage {
         pixels = new Color[width][height];
     }
 
+    @Override
     public void setPixelColor(Color color, int x, int y) {
         pixels[x][y] = color;
     }
 
+    @Override
     public Color getPixelColor(int x, int y) {
         return pixels[x][y];
     }

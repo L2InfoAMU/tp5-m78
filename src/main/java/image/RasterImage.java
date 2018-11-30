@@ -22,10 +22,12 @@ public abstract class RasterImage implements Image {
         }
     }
 
+    @Override
     public int getWidth() {
         return width;
     }
 
+    @Override
     public int getHeight() {
         return height;
     }

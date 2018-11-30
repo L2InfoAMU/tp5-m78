@@ -43,10 +43,12 @@ public class PaletteRasterImage extends RasterImage {
 
     }
 
+    @Override
     public void setPixelColor(Color color, int x, int y) {
         indexesOfColors[x][y] = palette.indexOf(color);
     }
 
+    @Override
     public Color getPixelColor(int x, int y) {
         return palette.get(indexesOfColors[x][y]);
     }
