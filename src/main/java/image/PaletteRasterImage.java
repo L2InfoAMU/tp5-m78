@@ -15,7 +15,7 @@ public class PaletteRasterImage implements Image {
         this.width=width;
         this.height= height;
         createRepresentation();
-        palette.add(color); //TODO pareil que juste en bas on va les mélanger si on peut
+        palette.add(color);
         setPixelsColor(color);
     }
 
@@ -23,12 +23,16 @@ public class PaletteRasterImage implements Image {
         this.width = pixels.length;
         this.height = pixels[0].length;
         createRepresentation();
-        for (int x = 0 ; x < width ; x++) {
-            for(int y = 0 ; y < height ;y ++){
-                if (!palette.contains(pixels[x][y])) palette.add(pixels[x][y]);
-            } //TODO a sortir de cette fonction parce que houla c'est moche
-        }
+        addColorsToPalette(pixels);
         setPixelsColor(pixels);
+    }
+
+    private void addColorsToPalette(Color[][] pixels) {
+    	for (int x = 0 ; x < width ; x++) {
+		for(int y = 0 ; y < height ; y++) {
+			if (!palette.contains(pixels[x][y])) palette.add(pixels[x][y]);
+		}
+	}	
     }
 
     public void createRepresentation() {
