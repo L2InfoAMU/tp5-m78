@@ -15,18 +15,26 @@ public class PaletteRasterImage implements Image {
         this.width=width;
         this.height= height;
         createRepresentation();
+        palette.add(color); //TODO pareil que juste en bas on va les mélanger si on peut
         setPixelsColor(color);
     }
 
     public PaletteRasterImage(Color[][] pixels) {
+        this.width = pixels.length;
+        this.height = pixels[0].length;
+        createRepresentation();
+        for (int x = 0 ; x < width ; x++) {
+            for(int y = 0 ; y < height ;y ++){
+                if (!palette.contains(pixels[x][y])) palette.add(pixels[x][y]);
+            } //TODO a sortir de cette fonction parce que houla c'est moche
+        }
         setPixelsColor(pixels);
-        this.width = indexesOfColors.length;
-        this.height = indexesOfColors[0].length;
     }
 
     public void createRepresentation() {
         palette = new ArrayList<>();
         indexesOfColors = new int[width][height];
+
     }
 
     public void setPixelColor(Color color, int x, int y) {
@@ -48,7 +56,7 @@ public class PaletteRasterImage implements Image {
     private void setPixelsColor(Color color) {
         for(int x = 0 ; x < width ; x++) {
             for (int y = 0 ; y < height ; y++ ) {
-                indexesOfColors[x][y] = palette.indexOf(color);
+                setPixelColor(color, x, y);
             }
         }
     }

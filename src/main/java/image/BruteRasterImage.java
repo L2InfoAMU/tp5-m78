@@ -21,6 +21,7 @@ public class BruteRasterImage implements Image {
         requiresRectangularMatrix(colors);
         this.width = colors.length;
         this.height = colors[0].length;
+        createRepresentation();
         setPixelsColor(colors);
     }
 
@@ -38,13 +39,17 @@ public class BruteRasterImage implements Image {
     }
 
     private void setPixelsColor(Color[][] pixels) {
-        this.pixels = pixels.clone();
+        for (int x = 0 ; x < width ; x++) {
+            for(int y = 0 ; y < height ; y++){
+                setPixelColor(pixels[x][y], x, y);
+            }
+        }
     }
 
     private void setPixelsColor(Color color) {
         for(int x = 0 ; x < width ; x++) {
             for (int y = 0 ; y < height ; y++ ) {
-                pixels[x][y] = color;
+                setPixelColor(color, x, y);
             }
         }
     }
