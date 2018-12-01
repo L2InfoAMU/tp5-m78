@@ -17,7 +17,6 @@ public class VectorImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        //TODO explore chaque shape de la liste et s'arrete dès qu'elle rencontre une shape overlappant avec x et y puis renvoie la couleur de cette shape. renvoie blanc sinon
         for(int i = 0 ; i < shapes.size() ; i++) {
             Shape shape = shapes.get(i);
             if(shape.contains(new Point(x,y))) return shape.getColor();
